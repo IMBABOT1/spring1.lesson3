@@ -37,4 +37,8 @@ public class ProductRepository {
         throw new RuntimeException("Product with id: " + id + " not found");
     }
 
+    public void deleteById(Long id) {
+        products.removeIf(p -> p.getId().equals(id));
+    }
+
 }

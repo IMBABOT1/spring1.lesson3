@@ -24,4 +24,13 @@ public class ProductService {
     public Product getProductById(Long id){
         return productRepository.getProductById(id);
     }
+
+    public void deleteById(Long id) {
+        productRepository.deleteById(id);
+    }
+
+    public void changePrice(Long productId, Integer delta) {
+        Product p = productRepository.getProductById(productId);
+        p.setPrice(p.getPrice() + delta);
+    }
 }
