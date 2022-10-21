@@ -10,6 +10,7 @@ import ru.geekbrains.springweb.entities.Product;
 import ru.geekbrains.springweb.exceptions.ResourceNotFoundException;
 import ru.geekbrains.springweb.services.ProductService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -25,6 +26,8 @@ public class ProductController {
     public List<Product> getAllProducts() {
         return productService.findAll();
     }
+
+
 
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable Long id) {

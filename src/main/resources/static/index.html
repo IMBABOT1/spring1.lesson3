@@ -38,6 +38,17 @@
         </tr>
         </tbody>
     </table>
+
+    <p></p>
+    <h3>Filter</h3>
+    <form novalidate ng-submit="filter()">
+        <input class="form-control" type="number" placeholder="min" ng-model="filter.min">
+        <p></p>
+        <input class="form-control" type="number" placeholder="max" ng-model="filter.max">
+        <p></p>
+        <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+    <p></p>
 </div>
 </body>
 </html>
