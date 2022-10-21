@@ -1,4 +1,4 @@
-package ru.geekbrains.springweb.data;
+package ru.geekbrains.springweb.entities;
 
 import javax.persistence.*;
 
