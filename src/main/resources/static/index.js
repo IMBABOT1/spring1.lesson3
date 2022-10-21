@@ -39,6 +39,8 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             }
         }).then(function (response) {
             $scope.ProductsList = response.data;
+            $scope.filter.min = 0;
+            $scope.filter.max = 100;
         });
     }
 
