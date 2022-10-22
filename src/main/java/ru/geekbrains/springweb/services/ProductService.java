@@ -28,7 +28,7 @@ public class ProductService {
 
     public Page<Product> find(Integer minPrice, Integer maxPrice, String partTitle, Integer page) {
         Specification<Product> spec = Specification.where(null);
-        if (maxPrice != null) {
+        if (minPrice != null) {
             spec = spec.and(ProductsSpecifications.priceGreaterOrEqualsThan(minPrice));
         }
         if (maxPrice != null) {
@@ -52,9 +52,6 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public List<Product> findByPriceBetween(Integer min, Integer max) {
-        return productRepository.findAllByPriceBetween(min, max);
-    }
 
     public void deleteProductById(Long id) {
         Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Unable to delete product. Product not found, id: " + id));

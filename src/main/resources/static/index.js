@@ -37,18 +37,5 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
         });
     }
 
-    $scope.filter = function () {
-        $http({
-            url: contextPath + '/products/price_between',
-            method: 'get',
-            params: {
-                min: $scope.filter.min,
-                max: $scope.filter.max
-            }
-        }).then(function (response) {
-            $scope.ProductsList = response.data;
-        });
-    }
-
     $scope.loadProducts();
 });
