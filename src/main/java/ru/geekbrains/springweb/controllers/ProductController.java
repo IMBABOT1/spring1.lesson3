@@ -11,6 +11,7 @@ import ru.geekbrains.springweb.services.ProductService;
 
 
 @RestController
+@RequestMapping("/api/v1/products")
 public class ProductController {
     private ProductService productService;
 
@@ -19,7 +20,7 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/products")
+    @GetMapping
     public Page<Product> getAllProducts(
             @RequestParam(name = "p", defaultValue = "1") Integer page,
             @RequestParam(name = "min_price", required = false) Integer minPrice,
@@ -33,28 +34,28 @@ public class ProductController {
     }
 
 
-    @GetMapping("/products/{id}")
+    @GetMapping("/{id}")
     public Product getProductById(@PathVariable Long id) {
         return productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student not found, id: " + id));
     }
 
-    @PostMapping("/products")
+    @PostMapping
     public Product savaNewProduct(@RequestBody Product product) {
         product.setId(null);
         return productService.save(product);
     }
 
-    @PutMapping("/products")
+    @PutMapping
     public Product updateProduct(@RequestBody Product product) {
         return productService.save(product);
     }
 
-    @DeleteMapping("/products/{id}")
+    @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable Long id) {
         productService.deleteProductById(id);
     }
 
-    @GetMapping("/products/change_price")
+    @GetMapping("/change_price")
     public void changePrice(@RequestParam Long productId, @RequestParam Integer delta) {
         productService.changePrice(productId, delta);
     }
