@@ -4,6 +4,7 @@ package ru.geekbrains.springweb.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.springweb.dto.ProductDto;
 import ru.geekbrains.springweb.entities.Product;
 import ru.geekbrains.springweb.exceptions.ResourceNotFoundException;
 import ru.geekbrains.springweb.services.ProductService;
@@ -21,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public Page<Product> getAllProducts(
+    public Page<ProductDto> getAllProducts(
             @RequestParam(name = "p", defaultValue = "1") Integer page,
             @RequestParam(name = "min_price", required = false) Integer minPrice,
             @RequestParam(name = "max_price", required = false) Integer maxPrice,
@@ -30,7 +31,7 @@ public class ProductController {
         if (page < 1) {
             page = 1;
         }
-        return productService.find(minPrice, maxPrice, titlePart, page);
+        return productService.find(minPrice, maxPrice, titlePart, page).map(p -> new ProductDto(p));
     }
 
 
