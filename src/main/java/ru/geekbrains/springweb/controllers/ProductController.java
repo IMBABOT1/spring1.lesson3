@@ -44,7 +44,12 @@ public class ProductController {
         return productService.save(product);
     }
 
-    @GetMapping("/products/delete/{id}")
+    @PutMapping("/products")
+    public Product updateProduct(@RequestBody Product product) {
+        return productService.save(product);
+    }
+
+    @DeleteMapping("/products/{id}")
     public void deleteProductById(@PathVariable Long id) {
         productService.deleteProductById(id);
     }
@@ -53,5 +58,4 @@ public class ProductController {
     public void changePrice(@RequestParam Long productId, @RequestParam Integer delta) {
         productService.changePrice(productId, delta);
     }
-
 }
