@@ -16,6 +16,16 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
     };
 
 
+
+    $scope.createProductJson = function () {
+        console.log($scope.newProductJson);
+        $http.post(contextPath + '/products', $scope.newProductJson)
+            .then(function (response) {
+                $scope.loadProducts();
+            });
+    }
+
+
     $scope.deleteProduct = function (productId) {
         $http.get(contextPath + '/products/delete/' + productId)
             .then(function (response) {

@@ -57,4 +57,8 @@ public class ProductService {
         Product product = productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Unable to delete product. Product not found, id: " + id));
         productRepository.delete(product);
     }
+
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
 }

@@ -3,16 +3,12 @@ package ru.geekbrains.springweb.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.springweb.entities.Product;
 import ru.geekbrains.springweb.exceptions.ResourceNotFoundException;
 import ru.geekbrains.springweb.services.ProductService;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 @RestController
 public class ProductController {
@@ -40,6 +36,12 @@ public class ProductController {
     @GetMapping("/products/{id}")
     public Product getProductById(@PathVariable Long id) {
         return productService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student not found, id: " + id));
+    }
+
+    @PostMapping("/products")
+    public Product savaNewProduct(@RequestBody Product product) {
+        product.setId(null);
+        return productService.save(product);
     }
 
     @GetMapping("/products/delete/{id}")
