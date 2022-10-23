@@ -42,16 +42,35 @@
             <td>ID</td>
             <td>Название</td>
             <td>Цена</td>
+            <td>Действие</td>
         </tr>
         <tbody>
         <tr ng-repeat="p in ProductsPage.content">
             <td>{{p.id}}</td>
             <td>{{p.title}}</td>
             <td>{{p.price}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="addToCart(p.id)">Add To Cart</button>
+            </td>
         </tr>
         </tbody>
     </table>
-</div>
 
+    <h3>Корзина</h3>
+    <table class="table table-hover">
+        <tr>
+            <td>ID</td>
+            <td>Название</td>
+            <td>Цена</td>
+        </tr>
+        <tbody>
+        <tr ng-repeat="p in ProductsList">
+            <td>{{p.id}}</td>
+            <td>{{p.title}}</td>
+            <td>{{p.price}}</td>
+        </tr>
+    </table>
+
+</div>
 </body>
 </html>
