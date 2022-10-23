@@ -17,8 +17,6 @@ public class Product {
     private Integer price;
 
 
-    @Column(name = "secret_key")
-    private String secretKey;
 
     public Product() {
     }
@@ -53,11 +51,5 @@ public class Product {
         this.price = price;
     }
 
-    public String getSecretKey() {
-        return secretKey;
-    }
 
-    public void setSecretKey(String secretKey) {
-        this.secretKey = secretKey;
-    }
 }

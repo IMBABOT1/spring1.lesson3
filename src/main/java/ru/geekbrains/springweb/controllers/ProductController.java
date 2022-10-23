@@ -22,7 +22,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public Page<ProductDto> getAllProducts(
+    public Page<Product> getAllProducts(
             @RequestParam(name = "p", defaultValue = "1") Integer page,
             @RequestParam(name = "min_price", required = false) Integer minPrice,
             @RequestParam(name = "max_price", required = false) Integer maxPrice,
@@ -31,7 +31,7 @@ public class ProductController {
         if (page < 1) {
             page = 1;
         }
-        return productService.find(minPrice, maxPrice, titlePart, page).map(p -> new ProductDto(p));
+        return productService.find(minPrice, maxPrice, titlePart, page);
     }
 
 
