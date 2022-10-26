@@ -1,14 +1,11 @@
 package ru.geekbrains.springweb.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.geekbrains.springweb.converters.ProductConverter;
-import ru.geekbrains.springweb.dto.ProductDto;
 import ru.geekbrains.springweb.entities.Product;
 import ru.geekbrains.springweb.exceptions.ResourceNotFoundException;
 import ru.geekbrains.springweb.services.ProductsService;
