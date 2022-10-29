@@ -19,6 +19,15 @@ angular.module('app', ['ngStorage']).controller('indexController', function ($sc
         });
     };
 
+
+    $scope.createUserJson = function () {
+        console.log($scope.newUserJson);
+        $http.post(contextPath + '/users', $scope.newUserJson)
+            .then(function (response) {
+                $scope.loadProducts();
+            });
+    }
+
     $scope.tryToAuth = function () {
         $http.post('http://localhost:8189/app/auth', $scope.user)
             .then(function successCallback(response) {
