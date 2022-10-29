@@ -1,6 +1,5 @@
 package com.geekbrains.spring.web.exceptions;
 
-
 import lombok.Data;
 
 import java.util.List;
@@ -15,5 +14,3 @@ public class ValidationException extends RuntimeException {
         this.errorFieldsMessages = errorFieldsMessages;
     }
 }
-
-

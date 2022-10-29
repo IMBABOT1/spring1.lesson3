@@ -14,6 +14,3 @@ public class FieldsValidationError {
         this.errorFieldsMessages = errorFieldsMessages;
     }
 }
-
-
-

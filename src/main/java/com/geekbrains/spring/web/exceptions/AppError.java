@@ -1,6 +1,5 @@
 package com.geekbrains.spring.web.exceptions;
 
-
 public class AppError {
     private int statusCode;
     private String message;
@@ -29,4 +28,3 @@ public class AppError {
         this.message = message;
     }
 }
-
