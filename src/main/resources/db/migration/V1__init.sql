@@ -1,31 +1,19 @@
-create table if not exists products (
-    id          bigserial primary key,
-    title       varchar(255),
-    price       int
+create table products
+(
+    id         bigserial primary key,
+    title      varchar(255),
+    price      int,
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp
 );
 
-INSERT INTO products (title, price) VALUES
-                                        ('Dark Souls', 80),
-                                        ('Dark Souls2', 80),
-                                        ('Dark Souls3', 80),
-                                        ('Bloodborne', 80),
-                                        ('Sekiro', 80),
-                                        ('Elden Ring', 80),
-                                        ('StarCraft', 80),
-                                        ('World of Warcraft ', 80),
-                                        ('World of Warcraft: Wrath of the Lich King', 80),
-                                        ('StarCraft II', 80),
-                                        ('StarCraft II Wings of Liberty', 80),
-                                        ('StarCraft II: Heart of the Swarm', 80),
-                                        ('StarCraft II: Legacy of the Void', 80),
-                                        ('Dota', 80),
-                                        ('Dota 2', 80),
-                                        ('World of Warcraft: Burning Crusade', 80),
-                                        ('World of Warcraft: Cataclysm', 80),
-                                        ('World of Warcraft: Mists of Pandaria', 80),
-                                        ('World of Warcraft: Warlords of Draenor', 80);
+insert into products (title, price)
+values ('Milk', 100),
+       ('Bread', 80),
+       ('Cheese', 90);
 
-create table users (
+create table users
+(
     id         bigserial primary key,
     username   varchar(36) not null,
     password   varchar(80) not null,
@@ -34,16 +22,20 @@ create table users (
     updated_at timestamp default current_timestamp
 );
 
-create table roles (
+create table roles
+(
     id         bigserial primary key,
     name       varchar(50) not null,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp
 );
 
-CREATE TABLE users_roles (
-    user_id bigint not null references users (id),
-    role_id bigint not null references roles (id),
+create table users_roles
+(
+    user_id    bigint not null references users (id),
+    role_id    bigint not null references roles (id),
+    created_at timestamp default current_timestamp,
+    updated_at timestamp default current_timestamp,
     primary key (user_id, role_id)
 );
 
@@ -58,3 +50,41 @@ values ('bob', '$2a$04$Fx/SX9.BAvtPlMyIIqqFx.hLY2Xp8nnhpzvEEVINvVpwIPbA3v/.i', '
 insert into users_roles (user_id, role_id)
 values (1, 1),
        (2, 2);
+
+create table orders
+(
+    id          bigserial primary key,
+    user_id     bigint not null references users (id),
+    total_price int    not null,
+    address     varchar(255),
+    phone       varchar(255),
+    created_at  timestamp default current_timestamp,
+    updated_at  timestamp default current_timestamp
+);
+
+create table order_items
+(
+    id                bigserial primary key,
+    product_id        bigint not null references products (id),
+    order_id          bigint not null references orders (id),
+    quantity          int    not null,
+    price_per_product int    not null,
+    price             int    not null,
+    created_at        timestamp default current_timestamp,
+    updated_at        timestamp default current_timestamp
+);
+
+insert into orders (user_id, total_price, address, phone)
+values (1, 200, 'address', '12345');
+
+insert into order_items (product_id, order_id, quantity, price_per_product, price)
+values (1, 1, 2, 100, 200);
+
+
+
+
+
+
+
+
+
