@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/products")
 @RequiredArgsConstructor
@@ -17,6 +19,7 @@ public class ProductsController {
     private final ProductsService productsService;
     private final ProductConverter productConverter;
     private final ProductValidator productValidator;
+
 
     @GetMapping
     public Page<ProductDto> getAllProducts(
@@ -28,6 +31,11 @@ public class ProductsController {
         if (page < 1) {
             page = 1;
         }
+
+
+        List<ProductDto> list = productsService.findAll(minPrice, maxPrice, titlePart, page).map(p -> productConverter.entityToDto(p)).toList();
+        System.out.println(list);
+
         return productsService.findAll(minPrice, maxPrice, titlePart, page).map(
                 p -> productConverter.entityToDto(p)
         );

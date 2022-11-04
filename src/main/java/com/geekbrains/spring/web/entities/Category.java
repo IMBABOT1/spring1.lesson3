@@ -1,5 +1,6 @@
 package com.geekbrains.spring.web.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -8,8 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "categories")
-@Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Category {
 
     @Id
@@ -23,4 +24,9 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private List<Product> list;
 
+
+    @Override
+    public String toString() {
+        return title;
+     }
 }
