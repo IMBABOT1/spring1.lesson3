@@ -8,7 +8,8 @@ angular.module('market-front').controller('storeController', function ($scope, $
             params: {
                 title_part: $scope.filter ? $scope.filter.title_part : null,
                 min_price: $scope.filter ? $scope.filter.min_price : null,
-                max_price: $scope.filter ? $scope.filter.max_price : null
+                max_price: $scope.filter ? $scope.filter.max_price : null,
+                category: $scope.filter ? $scope.filter.category : null,
             }
         }).then(function (response) {
             console.log(response.data)

@@ -1,5 +1,6 @@
 package com.geekbrains.spring.web.repositories;
 
+import com.geekbrains.spring.web.dto.ProductDto;
 import com.geekbrains.spring.web.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
