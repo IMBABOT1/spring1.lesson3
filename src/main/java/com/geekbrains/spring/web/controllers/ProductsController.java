@@ -34,6 +34,8 @@ public class ProductsController {
             page = 1;
         }
 
+        System.out.println(category);
+
         return productsService.findAll(minPrice, maxPrice, titlePart, category, page).map(
                 p -> productConverter.entityToDto(p)
         );
