@@ -23,7 +23,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    // http://localhost:8080/ws/products.wsdl
+
     @Bean(name = "products")
     public DefaultWsdl11Definition studentsWsdl11Definition(XsdSchema productsSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();

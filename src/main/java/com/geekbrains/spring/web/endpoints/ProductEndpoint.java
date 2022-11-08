@@ -40,27 +40,57 @@ public class ProductEndpoint {
         return response;
     }
 
+//       <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:f="http://www.imbabot.com/spring/ws/products">
+//            <soapenv:Header/>
+//            <soapenv:Body>
+//                <f:getProductByIdRequest>
+//                    <f:id>3</f:id>
+//                </f:getProductByIdRequest>
+//            </soapenv:Body>
+//		</soapenv:Envelope>
+
+//
+//       <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:f="http://www.imbabot.com/spring/ws/products">
+//            <soapenv:Header/>
+//            <soapenv:Body>
+//                <f:getAllProductsRequest/>
+//            </soapenv:Body>
+//        </soapenv:Envelope>
+
+
+//    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProductsRequest")
+//    @ResponsePayload
+//    public GetAllProductsResponse getAllProducts(@RequestPayload GetAllProductsRequest request,
+//                                                 @RequestParam(name = "p", defaultValue = "1") Integer page,
+//                                                 @RequestParam(name = "min_price", required = false) Integer minPrice,
+//                                                 @RequestParam(name = "max_price", required = false) Integer maxPrice,
+//                                                 @RequestParam(name = "title_part", required = false) String titlePart,
+//                                                 @RequestParam(name = "category", required = false) String category
+//
+//
+//    ) {
+//
+//        System.out.println("a");
+//        GetAllProductsResponse response = new GetAllProductsResponse();
+//       // studentService.getAllStudents().forEach(response.getStudents()::add);
+//        Page<Product> optionals = productsService.findAll(minPrice, maxPrice, titlePart, category, page);
+//        for (Product p : optionals.toList()){
+//            response.getProducts().add(productSoapConverter.entityToDto(p));
+//        }
+//        return response;
+//    }
+//
+
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getAllProductsRequest")
     @ResponsePayload
-    public GetAllProductsResponse getAllProducts(@RequestPayload GetAllProductsRequest request,
-                                                 @RequestParam(name = "p", defaultValue = "1") Integer page,
-                                                 @RequestParam(name = "min_price", required = false) Integer minPrice,
-                                                 @RequestParam(name = "max_price", required = false) Integer maxPrice,
-                                                 @RequestParam(name = "title_part", required = false) String titlePart,
-                                                 @RequestParam(name = "category", required = false) String category
-
-
-    ) {
+    public GetAllProductsResponse getAllStudents(@RequestPayload GetAllProductsRequest request) {
         GetAllProductsResponse response = new GetAllProductsResponse();
-       // studentService.getAllStudents().forEach(response.getStudents()::add);
-        Page<Product> optionals = productsService.findAll(minPrice, maxPrice, titlePart, category, page);
-        for (Product p : optionals.toList()){
+        List<Product> products = productsService.findAll();
+        for (Product p : products) {
             response.getProducts().add(productSoapConverter.entityToDto(p));
         }
         return response;
     }
-
-
 }
 

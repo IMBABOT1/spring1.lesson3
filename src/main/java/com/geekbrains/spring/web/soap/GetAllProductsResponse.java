@@ -6,7 +6,7 @@
 //
 
 
-package soap;
+package com.geekbrains.spring.web.soap;
 
 import java.util.ArrayList;
 import java.util.List;

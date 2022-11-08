@@ -14,6 +14,7 @@ public class ProductSoapConverter {
         p.setId(product.getId());
         p.setPrice(product.getPrice());
         p.setTitle(product.getTitle());
+        p.setCategory(product.getCategory().getTitle());
         return p;
     }
 }

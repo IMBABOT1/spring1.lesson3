@@ -6,7 +6,7 @@
 //
 
 
-package soap;
+package com.geekbrains.spring.web.soap;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

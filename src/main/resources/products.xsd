@@ -12,9 +12,11 @@
         </xs:complexType>
     </xs:element>
 
+
     <xs:element name="getAllProductsRequest">
         <xs:complexType/>
     </xs:element>
+
 
     <xs:element name="getProductByIdResponse">
         <xs:complexType>
@@ -31,6 +33,7 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
 
     <xs:complexType name="product">
         <xs:sequence>

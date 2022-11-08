@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.imbabot.com/spring/ws/products", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package soap;
+package com.geekbrains.spring.web.soap;
