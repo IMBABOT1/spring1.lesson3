@@ -37,9 +37,6 @@
             <xs:element name="id" type="xs:long"/>
             <xs:element name="title" type="xs:string"/>
             <xs:element name="price" type="xs:int"/>
-            <xs:element name="category" type="xs:string"/>
-            <xs:element name="createdAt" type="xs:string"/>
-            <xs:element name="updatedAt" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
